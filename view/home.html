@@ -1,25 +1,57 @@
 <div class="container">
-	<div class="row">
-	 	<div class="col-md-12">
-			<button type="button" class="btn btn-default " style="float: right;" ng-click="logout()">Logout</button>
+	<main>
+		<div class="row">
+		 	<div class="col-md-12">
+				<button type="button" class="btn btn-default " style="float: right;" ng-click="logout()">Logout</button>
+			</div>
 		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-10">
-			<div class="media">
-				<div class="media-left media-middle">
-				 	<img src="{{gdata.getUser().picture}}" class="img-circle img-responsive media-object" style="max-width: 60px;">
-				</div>
-				<div class="media-body">
-					<h2 class="media-heading">Seja bem-vindo {{gdata.getUser().name}}!</h2>
-					<p class="media-heading">{{gdata.getUser().email}}</p>
+		<div class="row">
+			<div class="col-md-10">
+				<div class="media">
+					<div class="media-left media-middle">
+					 	<img src="{{gdata.getUser().picture}}" class="img-circle img-responsive media-object" style="max-width: 60px;">
+					</div>
+					<div class="media-body">
+						<h2 class="media-heading">Seja bem-vindo {{gdata.getUser().name}}!</h2>
+						<p class="media-heading">{{gdata.getUser().email}}</p>
+						<a href={{gdata.getUser().link}} class="btn btn-social-icon btn-google" target="_blank">
+					    	<span class="fa fa-google"></span>
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>
-
-	</div>
-	
+	</main>
 
 
-	
+	<section>
+		<form class="form-horizontal" ng-submit="submitAdd()" name="addContact">
+			<div class="form-group">
+				<label for="exampleInputEmail1">Email address</label>
+				<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+			</div>
+
+			<label for="str">
+				<div class="input-group" ng-class="{'has-error' : !addContact.str.$valid}">
+					<input ng-model="str" name="str" type="text" required class="form-control input-md">
+				</div>
+			</label>
+
+			<p>Last Name</p>
+			<!-- Text input-->
+			<div class="input-group" ng-class="{'has-error' : !addContact.lastName.$valid}">
+			  <input ng-model="contact.lastName" name="lastName" type="text" required class="form-control input-md">
+			</div>
+
+			<p>Phone Number</p>
+			<!-- Text input-->
+			<div class="input-group" ng-class="{'has-error' : !addContact.phoneNumber.$valid}">
+			  <input ng-model="contact.phoneNumber" name="phoneNumber" type="text" required class="form-control input-md">
+			</div>
+
+			<button style="margin-top: 20px;" type="submit" class="btn btn-white btn-rad btn-trans" ng-class="{'disabled' : !addContact.$valid}">Add</button>
+			
+		</form>
+	</section>
+
 </div>
