@@ -24,32 +24,27 @@
 	</main>
 
 
-	<section>
-		<form class="form-horizontal" ng-submit="submitAdd()" name="addContact">
-			<div class="form-group">
-				<label for="exampleInputEmail1">Email address</label>
-				<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+	<section class="padding70">
+		<form class="form-horizontal" ng-submit="enviaDados()" name="processaDados">
+
+			<div class="form-group" ng-class="{'has-error' : !processaDados.str.$valid}">
+				<label for="str">String</label>
+				<input type="text" name="str" class="form-control"  ng-model="dados.str" required >
 			</div>
 
-			<label for="str">
-				<div class="input-group" ng-class="{'has-error' : !addContact.str.$valid}">
-					<input ng-model="str" name="str" type="text" required class="form-control input-md">
-				</div>
-			</label>
-
-			<p>Last Name</p>
-			<!-- Text input-->
-			<div class="input-group" ng-class="{'has-error' : !addContact.lastName.$valid}">
-			  <input ng-model="contact.lastName" name="lastName" type="text" required class="form-control input-md">
+			<div class="form-group" ng-class="{'has-error' : !processaDados.num.$valid}">
+				<label for="num">Número</label>
+				<input type="number" name="num" class="form-control"  ng-model="dados.num" required min="0"  pattern="\d*">
 			</div>
+			
+			<button type="submit" class="btn btn-info btn-lg " ng-class="{'disabled' : !processaDados.$valid}">PROCESSAR</button>
 
-			<p>Phone Number</p>
-			<!-- Text input-->
-			<div class="input-group" ng-class="{'has-error' : !addContact.phoneNumber.$valid}">
-			  <input ng-model="contact.phoneNumber" name="phoneNumber" type="text" required class="form-control input-md">
+
+			<div class="form-group top50">
+				<label for="res">Resultado</label>
+				<textarea name="res" class="form-control" id="res"></textarea>
 			</div>
-
-			<button style="margin-top: 20px;" type="submit" class="btn btn-white btn-rad btn-trans" ng-class="{'disabled' : !addContact.$valid}">Add</button>
+			
 			
 		</form>
 	</section>
