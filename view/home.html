@@ -25,7 +25,7 @@
 
 
 	<section class="padding70">
-		<form class="form-horizontal" ng-submit="enviaDados()" name="processaDados">
+		<form class="form-horizontal" name="processaDados">
 
 			<div class="form-group" ng-class="{'has-error' : !processaDados.str.$valid}">
 				<label for="str">String</label>
@@ -37,12 +37,16 @@
 				<input type="number" name="num" class="form-control"  ng-model="dados.num" required min="0"  pattern="\d*">
 			</div>
 			
-			<button type="submit" class="btn btn-info btn-lg " ng-class="{'disabled' : !processaDados.$valid}">PROCESSAR</button>
+			<button type="button" class="btn btn-info btn-lg " ng-class="{'disabled' : !processaDados.$valid}" ng-click="enviaDados(dados)">PROCESSAR</button>
 
 
 			<div class="form-group top50">
 				<label for="res">Resultado</label>
-				<textarea name="res" class="form-control" id="res"></textarea>
+				<textarea class="form-control" id="res" rows="4" readonly >
+				{{dados.res}} 
+				{{dados.res2}}
+				{{dados.res3}}
+				</textarea>
 			</div>
 			
 			
